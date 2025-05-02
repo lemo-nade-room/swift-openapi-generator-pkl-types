@@ -1,0 +1,16 @@
+import "../types.pkl" as OpenAPIGenerator
+
+// cd Examples && pkl eval local-import.pkl > openapi-generator-config.yaml
+
+config: OpenAPIGenerator.Config = new {
+  generate = new Listing {
+    "types"
+    "server"
+  }
+  accessModifier    = "package"
+  namingStrategy = "defensive"
+}
+output {
+  value = config
+  renderer = new YamlRenderer {}
+}
