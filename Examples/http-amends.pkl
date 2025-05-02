@@ -2,7 +2,7 @@ amends "https://raw.githubusercontent.com/lemo-nade-room/swift-openapi-generator
 
 // pkl eval ./Examples/http-amends.pkl > ./Examples/openapi-generator-config.yaml
 
-generate = new {
+generate  {
   "types"
   "client"
 }
