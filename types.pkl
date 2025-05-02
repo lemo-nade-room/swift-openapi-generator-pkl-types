@@ -23,3 +23,16 @@ class Config {
   nameOverrides:      Mapping<String, String>?
   featureFlags:       FeatureFlags?
 }
+
+
+generate: Listing<GeneratorMode> = new Listing {}
+accessModifier: AccessModifier?
+additionalImports: Listing<String>?
+filter: DocumentFilter?
+namingStrategy: NamingStrategy?
+nameOverrides: Mapping<String, String>?
+featureFlags: FeatureFlags?
+
+output {
+  renderer = new YamlRenderer {}
+}

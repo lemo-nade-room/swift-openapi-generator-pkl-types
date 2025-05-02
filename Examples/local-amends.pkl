@@ -1,0 +1,9 @@
+amends "../types.pkl"
+
+// pkl eval ./Examples/local-amends.pkl > ./Examples/openapi-generator-config.yaml
+
+generate {
+  "client"
+  "server"
+}
+namingStrategy = "idiomatic"

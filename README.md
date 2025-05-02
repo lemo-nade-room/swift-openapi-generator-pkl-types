@@ -14,7 +14,7 @@ This repository provides PKL-based type definitions for generating the `openapi-
 
   ```bash
   brew install pkl
-  ```
+````
 
 * **PKL CLI**
   Documentation: [https://pkl-lang.org/main/current/pkl-cli/index.html](https://pkl-lang.org/main/current/pkl-cli/index.html)
@@ -23,38 +23,28 @@ This repository provides PKL-based type definitions for generating the `openapi-
 
 The `types.pkl` file includes definitions such as `SwiftOpenAPIGeneratorConfig`, `DocumentFilter`, and others.
 
-* To leverage IDE (IntelliJ / VS Code) autocomplete and type checking, copy `types.pkl` into your project and import it locally.
-* Feel free to copy or modify the contents of the file as needed.
+* To leverage IDE (IntelliJ / VS Code) autocomplete and type checking, copy `types.pkl` into your project.
+* Feel free to copy or modify its contents as needed.
 
-## Defining Your Own Configuration File
+## Defining Your Own Configuration
 
-Create your own `openapi-generator-config.pkl`, then run the PKL command to emit YAML.
-
-Below is an example assuming you have copied `types.pkl` to `Sources/App/types.pkl`. You would then create `Sources/App/openapi-generator-config.pkl` like this:
+Create an `openapi-generator-config.pkl` that amends `types.pkl` and adds or overrides fields. For example:
 
 ```pkl
-import "./types.pkl" as OpenAPIGenerator
+amends "./types.pkl"
 
-config: OpenAPIGenerator.Config = new {
-  generate = new Listing {
-    "types"
-    "server"
-  }
+generate {
+  "client"
+  "server"
 }
-output {
-  value = config
-  renderer = new YamlRenderer {}
-}
+namingStrategy = "idiomatic"
 ```
 
-Add any of the supported top-level keys—such as `additionalImports`, `filter`, or `namingStrategy`—inside the `config` block as required.
+Add other supported keys—such as `additionalImports` or `filter`—as needed.
 
 ## Generating `openapi-generator-config.yaml`
-
-Run:
 
 ```bash
 pkl eval ./Sources/App/openapi-generator-config.pkl \
   > ./Sources/App/openapi-generator-config.yaml
 ```
-

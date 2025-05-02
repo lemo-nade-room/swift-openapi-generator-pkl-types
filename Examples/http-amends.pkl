@@ -1,0 +1,34 @@
+amends "https://raw.githubusercontent.com/lemo-nade-room/swift-openapi-generator-pkl-types/main/types.pkl"
+
+// pkl eval ./Examples/http-amends.pkl > ./Examples/openapi-generator-config.yaml
+
+generate = new {
+  "types"
+  "client"
+}
+
+accessModifier = "public"
+
+additionalImports {
+  "Foundation"
+}
+
+filter {
+  operations {
+    "getPetById"
+    "addPet"
+  }
+  tags {
+    "pet"
+  }
+}
+
+namingStrategy = "idiomatic"
+
+nameOverrides {
+  ["OldTypeName"] = "NewTypeName"
+}
+
+featureFlags {
+  "empty"
+}

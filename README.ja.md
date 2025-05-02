@@ -32,18 +32,13 @@
 を作成する前提としたサンプルです。
 
 ```pkl
-import "./types.pkl" as OpenAPIGenerator
+amends "./types.pkl"
 
-config: OpenAPIGenerator.Config = new {
-  generate = new Listing {
-    "types"
-    "server"
-  }
+generate {
+  "client"
+  "server"
 }
-output {
-  value = config
-  renderer = new YamlRenderer {}
-}
+namingStrategy = "idiomatic"
 ```
 
 必要に応じて、`config` ブロック内に `additionalImports` や `filter`、`namingStrategy` などを追加してください。
